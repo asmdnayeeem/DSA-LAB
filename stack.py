@@ -18,21 +18,17 @@ class Stack:
     def pop(self):
         if self.isEmpty():
             return None
-        self.items.pop()
+        return self.items.pop()
 
 stack=Stack()
-stack.push(5)
 stack.push(4)
-stack.push(3)
 stack.push(2)
 stack.push(1)
-stack.push(8)
-stack.show()        
-stack.peek()
+stack.push(5)
+stack.show()
+stack.size()
+stack.peek()     
 stack.pop()
 stack.show()
-stack.peek()
-stack.size() 
-newstack=Stack()
-newstack.push(2)
-newstack.show()       
+stack.size()
+stack.peek()     
