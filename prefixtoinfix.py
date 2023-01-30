@@ -1,7 +1,8 @@
 import stack
-inp=input("Enter the postfix expression:").split(" ")
+inp=input("Enter the prefix expression:").split(" ")
 inp=list(inp)
 n=len(inp)
+inp=inp.__reversed__()
 nstack=stack.Stack(n)
 newstack=stack.Stack(n)
 for i in inp:
@@ -72,8 +73,13 @@ for i in a:
             z=newstack.push(y+"||"+x)
          except TypeError:
              z=newstack.push((y or x))
-final=newstack.show()[0]
-print("Infix expression is:",final)
-        
 
-
+final=newstack.show()
+final=final[0]
+out=""
+if type(i)==int:
+    for i in final:
+        out=i+out
+    print(out)
+else:
+    print("Infix expression is:",final)
