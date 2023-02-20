@@ -5,22 +5,44 @@ class Node:
 
 
 class L_list:
-    def __init__(self) -> None:
+    def __init__(self, size) -> None:
         self.head = None
+        self.size = size
 
     def show(self):
         dat = self.head
         while dat != None:
-            print(dat.data)
+            print(dat.data, end="->")
             dat = dat.next
 
+        print(dat)
+
     def binsert(self, val):
-        New = Node(val)
-        New.next = self.head
-        self.head = New
+        new = Node(val)
+        dat = self.head
+        i=0
+        while dat:
+            dat = dat.next
+            i = i+1
+        if i == self.size:
+            print("list is full")
+            return
+        if self.head == None:
+            self.head = new
+        else:
+            new.next = self.head
+            self.head = new
 
     def eninsert(self, val):
         now = self.head
+        i = 0
+        dat = self.head
+        while dat:
+            dat = dat.next
+            i = i+1
+        if i == self.size:
+            print("list is full")
+            return
         if self.head == None:
             self.head = Node(val)
 
@@ -28,62 +50,58 @@ class L_list:
             now = now.next
         now.next = Node(val)
 
-    def inbt(self, mid, val):
-        if mid.data == None:
-            print("Node does not present")
-            return
+    def inbt(self, key, val):
         new = Node(val)
-        new.next = mid.next
-        mid.next = new
-
-    def RemoveNode(self, Removekey):
-        HeadVal = self.head
-
-        if (HeadVal is not None):
-            if (HeadVal.data == Removekey):
-                self.head = HeadVal.next
-                HeadVal = None
-                return None
-        while (HeadVal):
-            if HeadVal.data == Removekey:
-                break
-            prev = HeadVal
-            HeadVal = HeadVal.next
-
-        if (HeadVal == None):
-            return None
-
-        prev.next = HeadVal.next
-        HeadVal = None
-
-    def rev(self):
-        if (self.head == None or self.head.next == None):
+        dat = self.head
+        i=0
+        while dat:
+            dat = dat.next
+            i = i+1
+        if i == self.size:
+            print("list is full")
             return
-        pre = self.head
-        curr = self.head.next
-        while (curr):
-            next = curr.next
-            curr.next = pre
-            # update
-            pre = curr
-            curr = next
-        self.head.next = None
-        self.head = pre
+        temp = self.head
+        temp1 = self.head
+        j = 0
+        while temp1:
+            temp1 = temp1.next
+            j += 1
+        if key > j:
+            print("index out of range")
+            return
+        for i in range(key-1):
+            temp = temp.next
+        new.next = temp.next
+        temp.next = new
+
+    def delete(self, key):
+        temp = self.head
+        temp1 = self.head
+        j = 0
+        while temp1:
+            temp1 = temp1.next
+            j += 1
+        if key > j:
+            print("index out of range")
+            return
+        if key == 0:
+            self.head = temp.next
+            temp.next = None
+            return
+        for i in range(key-1):
+            temp = temp.next
+        temp.next = temp.next.next
+
+    def update(self, key, data):
+        temp = self.head
+        for i in range(key):
+            temp = temp.next
+        temp.data = data
 
 
-one = L_list()
-one.head = Node(21)
-e2 = Node("Tue")
-e3 = Node("Wed")
-# Link first Node to second node
-one.head.next = e2
+one = L_list(2)
+one.binsert(1)
+one.inbt(1, 3)
+one.inbt(2, 4)
 
-# Link second Node to third node
-e2.next = e3
-one.binsert(223)
-one.inbt(e2, 456)
-one.eninsert(22222)
-one.RemoveNode(223)
-one.show()
-one.rev()
 one.show()
