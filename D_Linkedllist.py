@@ -32,6 +32,17 @@ class DList:
             dat = dat.right
         print(dat)
 
+    def showr(self):
+        dat = self.head
+        l = []
+        while dat.right != None:
+            dat = dat.right
+
+        while dat != None:
+            print(dat.data, end=" <-> ")
+            dat = dat.left
+        print(dat)
+
     def binsert(self, val):
         new = Node(val)
         if self.head == None:
@@ -69,20 +80,23 @@ class DList:
         if mid == self.n:
             self.eninsert(val)
             return
-        temp = self.head
+        dat = self.head
         i = 0
         while i != mid-1:
-            temp = temp.right
+            dat = dat.right
             i += 1
-        new.left = temp
-        new.right = temp.right
-        temp.right = new
+
+        new.right = dat.right
+        dat.right.left = new
+        new.left = dat
+        dat.right = new
 
     def delete(self, key):
         if key == 0:
             temp = self.head
             self.head = temp.right
             temp.right = None
+            self.head.left = None
             return
         dat = self.head
         i = 0
@@ -94,6 +108,7 @@ class DList:
             return
         if key == i:
             dat.left.right = None
+
             return
         temp = self.head
         for i in range(key):
@@ -115,22 +130,33 @@ class DList:
             temp = temp.right
         temp.data = data
 
+    def add(self, val, ele):
+        new = Node(ele)
+        if self.head == None:
+            self.head = new
+        else:
+            dat = self.head
+            while dat.data != val:
+                dat = dat.right
+            new.right = dat.right
+            new.left = dat
+            dat.right = new
+
 
 if __name__ == "__main__":
     new = DList(6)
     new.binsert(1)
-    new.insert(1, 2)
+    new.binsert(2)
     new.show()
-    new.insert(0, 3)
+    new.showr()
+    new.eninsert(3)
     new.show()
-    new.eninsert(10)
+    new.showr()
     new.show()
-    new.insert(1, 5)
-    new.insert(5, 5)
+    new.showr()
+    new.insert(2, 4)
     new.show()
-    new.delete(0)
-    new.delete(4)
+    new.showr()
+    new.add(3, 6)
     new.show()
-    new.delete(6)
-    new.update(10, 10)
-    new.show()
+    print(new.showr())
