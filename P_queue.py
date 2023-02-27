@@ -51,7 +51,7 @@ class priQueue:
     def traverse(self):
 
         if self.isEmpty() == True:
-            return "Queue is Empty!"
+            print( "Queue is Empty!")
         else:
             temp = self.head
             while temp:
@@ -63,10 +63,10 @@ class priQueue:
 if __name__ == "__main__":
 
     pq = priQueue()
-    pq.push(4, 1)
-    pq.push(5, 2)
-    pq.push(6, 3)
-    pq.push(7, 0)
+    pq.push(8, 1)
+    pq.push(3, 4)
+    pq.push(1, 2)
+    pq.push(5, 0)
 
     pq.traverse()
 

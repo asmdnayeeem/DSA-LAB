@@ -3,12 +3,9 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
-
-
 class Tree:
     def __init__(self) -> None:
         self.root = None
-
 
 new = Tree()
 dat = Node(9)
