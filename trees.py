@@ -6,7 +6,6 @@ class Node:
 class Tree:
     def __init__(self) -> None:
         self.root = None
-
 new = Tree()
 dat = Node(9)
 new.root = dat
