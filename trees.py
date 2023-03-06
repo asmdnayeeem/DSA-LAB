@@ -116,7 +116,6 @@ class Tree:
             nod[0].data = n.data
             prev.right = prev.right.right
 
-
 if __name__ == "__main__":
     new = Tree()
     new.insert(9)
