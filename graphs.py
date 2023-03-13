@@ -1,15 +1,9 @@
 #representation
-graph1={"A":["B","C"],"B":[],"C":["D"],"D":[]}
+graph1={"A":["B","C"],"B":["C","D"],"C":["E","F"],"D":[],"E":["G"],"F":["G"],"G":[]}
 
-graph = {
-  '5' : ['3','7'],
-  '3' : ['2', '4'],
-  '7' : ['8'],
-  '2' : [],
-  '4' : ['8'],
-  '8' : []
-}
 
+
+#BFS
 def BFS(graph, node): 
   visited=[]  
   queue=[]
@@ -27,20 +21,19 @@ def BFS(graph, node):
   print()  
 
 print("Following is the Breadth-First Search")
-BFS(graph, '5')
-
-def DFS(graph,node):
-    pass
-
-visited = set() 
-
-def dfs(visited, graph, node):  #function for dfs 
-    if node not in visited:
+BFS(graph1, 'A')
+#DFS
+visited1 = []
+def dfs(visited1, graph, node): 
+    if node not in visited1:
         print (node,end=" ")
-        visited.add(node)
-        for neighbour in graph[node]:
-            dfs(visited, graph, neighbour)
+        visited1.append(node)
+        for next in graph[node]:
+            dfs(visited1, graph, next)
 
-# Driver Code
+
 print("Following is the Depth-First Search")
-dfs(visited, graph, '5')
+dfs(visited1, graph1, 'A')
+print()
+
+
