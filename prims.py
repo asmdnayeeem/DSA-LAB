@@ -7,18 +7,18 @@ def prim(graph, start):
 
     while len(visited) < len(graph):
         mw = float('inf')
-        min_edge = None
+        me = None
         for u in visited:
             for v, weight in graph[u]:
                 if v not in visited and weight < mw:
                     mw = weight
-                    min_edge = (u, v, weight)
+                    me = (u, v, weight)
 
-        if min_edge is None:
+        if me is None:
             break
 
-        visited.add(min_edge[1])
-        mse.append(min_edge)
+        visited.add(me[1])
+        mse.append(me)
         msc += mw
 
     return mse, msc
