@@ -11,6 +11,7 @@ class Tree:
         root = self.root
         if root:
             while root:
+
                 if val < root.data:
                     if root.left:
                         root = root.left
@@ -122,7 +123,7 @@ if __name__ == "__main__":
     new.insert(8)
     new.insert(10)
     new.insert(11)
-    new.insert(7)
+    new.insert(78)
     new.preorder()
     new.inorder()
     new.postorder()
