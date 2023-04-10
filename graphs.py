@@ -1,8 +1,6 @@
 #representation
 graph1={"A":["B","C"],"B":["C","D"],"C":["E","F"],"D":[],"E":["G"],"F":["G"],"G":[]}
 
-
-
 #BFS
 def BFS(graph, node): 
   visited=[]  

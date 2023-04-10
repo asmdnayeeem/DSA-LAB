@@ -3,9 +3,12 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
+
+
 class Tree:
     def __init__(self) -> None:
         self.root = None
+
     def insert(self, val):
         new = Node(val)
         root = self.root
@@ -32,6 +35,7 @@ class Tree:
 
     def preorder(self):
         root = self.root
+
         def preorderin(root):
             if root:
                 print(root.data, end=" ")
@@ -93,6 +97,7 @@ class Tree:
                 elif val > root.data:
                     prev = root
                     root = root.right
+            
             return [root, prev]
         except AttributeError:
             print("Given number does not exist")
@@ -117,6 +122,7 @@ class Tree:
             nod[0].data = n.data
             prev.right = prev.right.right
 
+
 if __name__ == "__main__":
     new = Tree()
     new.insert(9)
@@ -129,7 +135,8 @@ if __name__ == "__main__":
     new.postorder()
     new.max()
     new.min()
-    new.search(11)
+    a,b = new.search(10)
+    print(a.data,b.data)
     new.delete(8)
     new.inorder()
     new.delete(9)
